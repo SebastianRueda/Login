@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -20,6 +22,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText editTextUser;
     private EditText editTextEmail;
     private EditText editTextPassword;
+    private Switch switchSignUp;
 
     private SharedPreferences prefs;
 
@@ -35,6 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         editTextUser = findViewById(R.id.editTextUserSignUp);
         editTextEmail = findViewById(R.id.editTextEmailSignUp);
         editTextPassword = findViewById(R.id.editTextPasswordSignUp);
+        switchSignUp = findViewById(R.id.switchSignUp);
 
         prefs = getSharedPreferences(PREFERENCES_USER, Context.MODE_PRIVATE);
 
@@ -53,40 +57,47 @@ public class SignUpActivity extends AppCompatActivity {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
 
-                if(validateUser(user, email, password)) {
+                if(switchSignUp.isChecked()) {
 
-                    SharedPreferences.Editor editor = prefs.edit();
+                    if(validateUser(user, email, password)) {
 
-                    Gson gson = new Gson();
-                    User usuario = new User(user, email, password);
+                        SharedPreferences.Editor editor = prefs.edit();
 
-                    String json = gson.toJson(usuario);
+                        Gson gson = new Gson();
+                        User usuario = new User(user, email, password);
 
-                    editor.putString("usuario", json);
-                    editor.commit();
+                        String json = gson.toJson(usuario);
 
-                    Intent intent = new Intent(SignUpActivity.this, StartActivity.class);
-                    startActivity(intent);
-                }
+                        editor.putString("usuario", json);
+                        editor.commit();
+
+                        Intent intent = new Intent(SignUpActivity.this, StartActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                } else
+                    Toast.makeText(SignUpActivity.this, "To continue first accept the Terms and Condition.", Toast.LENGTH_SHORT).show();
 
             }
         });
+
     }
 
     private boolean validateUser(String user, String email, String password) {
 
         if(user.isEmpty()) {
-            Toast.makeText(SignUpActivity.this, "User is not valid.", Toast.LENGTH_SHORT);
+            Toast.makeText(SignUpActivity.this, "User is not valid.", Toast.LENGTH_SHORT).show();
+            Log.i("usuario", "dasdsadasdas");
             return false;
         }
 
         if(password.isEmpty()) {
-            Toast.makeText(SignUpActivity.this, "Password is not valid.", Toast.LENGTH_SHORT);
+            Toast.makeText(SignUpActivity.this, "Password is not valid.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         if(email.isEmpty()) {
-            Toast.makeText(SignUpActivity.this, "Email is not valid.", Toast.LENGTH_SHORT);
+            Toast.makeText(SignUpActivity.this, "Email is not valid.", Toast.LENGTH_SHORT).show();
             return false;
         }
 

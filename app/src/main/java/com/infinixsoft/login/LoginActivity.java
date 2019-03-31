@@ -37,10 +37,30 @@ public class LoginActivity extends AppCompatActivity {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
 
-                if (validLogin(email, password)) {
+                Gson gson = new Gson();
+                String json = prefs.getString("usuario", "");
+
+                User usuario = new User();
+
+                if(!json.equals(""))
+                    usuario = gson.fromJson(json, User.class);
+
+                if (validLogin(usuario, email, password)) {
+
+                    usuario.setLogged(true);
+
+                    SharedPreferences.Editor editor = prefs.edit();
+
+                    json = gson.toJson(usuario);
+
+                    editor.putString("usuario", json);
+                    editor.commit();
+
+                    cleanEditText();
 
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
                     startActivity(intent);
 
                 } else
@@ -49,20 +69,15 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private boolean validLogin(String email, String password) {
-        Gson gson = new Gson();
-        String json = prefs.getString("usuario", "");
-
-        User user;
-
-        if (json.equals(""))
-            user = new User();
-        else
-            user = gson.fromJson(json, User.class);
-
+    private boolean validLogin(User user, String email, String password) {
         if (email.equals(user.getEmail()) && password.equals(user.getPassword()))
             return true;
         else
             return false;
+    }
+
+    private void cleanEditText() {
+        editTextEmail.setText("");
+        editTextPassword.setText("");
     }
 }

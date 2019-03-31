@@ -37,9 +37,14 @@ public class StartActivity extends AppCompatActivity {
 
         if (!json.equals("")) {
 
-            Intent intent = new Intent(StartActivity.this, HomeActivity.class);
+            user = gson.fromJson(json, User.class);
 
-            startActivity(intent);
+            if(prefs.contains("usuario") && user.getLogged()) {
+
+                Intent intent = new Intent(StartActivity.this, HomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
         }
 
         buttonLoginStart.setOnClickListener(new View.OnClickListener() {
