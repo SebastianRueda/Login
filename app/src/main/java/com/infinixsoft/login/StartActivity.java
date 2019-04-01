@@ -3,6 +3,7 @@ package com.infinixsoft.login;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +13,7 @@ import android.widget.ImageView;
 
 import com.google.gson.Gson;
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView imageViewStart;
     private Button buttonLoginStart;
@@ -49,22 +50,30 @@ public class StartActivity extends AppCompatActivity {
             }
         }
 
-        buttonLoginStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this, LoginActivity.class);
+        buttonLoginStart.setOnClickListener(this);
 
+        buttonSignUpStart.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        vibe.vibrate(100);
+
+        Intent intent;
+
+        switch (v.getId()) {
+            case R.id.buttonLoginStart:
+                intent = new Intent(StartActivity.this, LoginActivity.class);
                 startActivity(intent);
-            }
-        });
 
-        buttonSignUpStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this, SignUpActivity.class);
+                break;
 
+            case R.id.buttonSignUpStart:
+                intent = new Intent(StartActivity.this, SignUpActivity.class);
                 startActivity(intent);
-            }
-        });
+
+                break;
+        }
     }
 }
