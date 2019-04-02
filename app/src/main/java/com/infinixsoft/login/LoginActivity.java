@@ -7,20 +7,19 @@ import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.infinixsoft.login.entity.User;
+import com.infinixsoft.login.entity.UserPreferences;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText editTextEmail;
     private EditText editTextPassword;
     private Button buttonLogin;
-
-    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonLogin = findViewById(R.id.buttonLoginLogin);
 
-        prefs = getSharedPreferences(SignUpActivity.PREFERENCES_USER, Context.MODE_PRIVATE);
+
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,24 +43,13 @@ public class LoginActivity extends AppCompatActivity {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
 
-                Gson gson = new Gson();
-                String json = prefs.getString("usuario", "");
+                UserPreferences userPreferences = new UserPreferences(LoginActivity.this);
 
-                User usuario = new User();
-
-                if(!json.equals(""))
-                    usuario = gson.fromJson(json, User.class);
+                User usuario = userPreferences.getUser();
 
                 if (validLogin(usuario, email, password)) {
 
-                    usuario.setLogged(true);
-
-                    SharedPreferences.Editor editor = prefs.edit();
-
-                    json = gson.toJson(usuario);
-
-                    editor.putString("usuario", json);
-                    editor.commit();
+                    userPreferences.userLogged(true);
 
                     cleanEditText();
 

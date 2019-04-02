@@ -7,19 +7,18 @@ import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
+import com.infinixsoft.login.entity.User;
+import com.infinixsoft.login.entity.UserPreferences;
 
 public class StartActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView imageViewStart;
     private Button buttonLoginStart;
     private Button buttonSignUpStart;
-
-    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +30,13 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         buttonLoginStart = findViewById(R.id.buttonLoginStart);
         buttonSignUpStart = findViewById(R.id.buttonSignUpStart);
 
-        prefs = getSharedPreferences(SignUpActivity.PREFERENCES_USER, Context.MODE_PRIVATE);
+        UserPreferences userPreferences = new UserPreferences(this);
 
-        Gson gson = new Gson();
-        String json = prefs.getString("usuario", "");
+        User user = userPreferences.getUser();
 
-        User user;
+        if (user != null) {
 
-        if (!json.equals("")) {
-
-            user = gson.fromJson(json, User.class);
-
-            if(prefs.contains("usuario") && user.getLogged()) {
+            if(user.getLogged()) {
 
                 Intent intent = new Intent(StartActivity.this, HomeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
