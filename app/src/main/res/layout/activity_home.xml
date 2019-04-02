@@ -7,14 +7,114 @@
     android:background="@color/colorBackgroundDark"
     tools:context=".HomeActivity">
 
-    <Button
-        android:id="@+id/buttonLogOut"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:text="LogOut"
-        android:background="@drawable/round_shape_button"
+    <View
+        android:id="@+id/viewLogOut"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/viewLogOut"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/viewInfo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorGrayLight"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <View
+            android:id="@+id/viewMaterias"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorGray"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintLeft_toRightOf="@+id/viewInfo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <View
+            android:id="@+id/viewObjetivos"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorGrayDark"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewInfo"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <View
+            android:id="@+id/viewExámenes"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorGrayDarkDark"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintLeft_toRightOf="@+id/viewObjetivos"
+            app:layout_constraintTop_toBottomOf="@+id/viewMaterias"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <ImageButton
+            android:id="@+id/imageButtonInfo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@mipmap/ic_info"
+            app:layout_constraintBottom_toBottomOf="@+id/viewInfo"
+            app:layout_constraintLeft_toLeftOf="@+id/viewInfo"
+            app:layout_constraintRight_toRightOf="@+id/viewInfo"
+            app:layout_constraintTop_toTopOf="@+id/viewInfo" />
+
+        <ImageButton
+            android:id="@+id/imageButtonMaterias"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@mipmap/ic_materias"
+            app:layout_constraintBottom_toBottomOf="@+id/viewMaterias"
+            app:layout_constraintLeft_toLeftOf="@+id/viewMaterias"
+            app:layout_constraintRight_toRightOf="@+id/viewMaterias"
+            app:layout_constraintTop_toTopOf="@+id/viewMaterias" />
+
+        <ImageButton
+            android:id="@+id/imageButtonObjetivos"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@mipmap/ic_objetivos"
+            app:layout_constraintBottom_toBottomOf="@+id/viewObjetivos"
+            app:layout_constraintLeft_toLeftOf="@+id/viewObjetivos"
+            app:layout_constraintRight_toRightOf="@+id/viewObjetivos"
+            app:layout_constraintTop_toTopOf="@+id/viewObjetivos" />
+
+        <ImageButton
+            android:id="@+id/imageButtonExámenes"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@mipmap/ic_examenes"
+            app:layout_constraintBottom_toBottomOf="@+id/viewExámenes"
+            app:layout_constraintLeft_toLeftOf="@+id/viewExámenes"
+            app:layout_constraintRight_toRightOf="@+id/viewExámenes"
+            app:layout_constraintTop_toTopOf="@+id/viewExámenes" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+    <Button
+        android:id="@+id/buttonLogOut"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_shape_button"
+        android:text="LogOut"
+        app:layout_constraintBottom_toBottomOf="@id/viewLogOut"
+        app:layout_constraintLeft_toLeftOf="@id/viewLogOut"
+        app:layout_constraintRight_toRightOf="@id/viewLogOut"
+        app:layout_constraintTop_toTopOf="@id/viewLogOut" />
 
 </android.support.constraint.ConstraintLayout>
