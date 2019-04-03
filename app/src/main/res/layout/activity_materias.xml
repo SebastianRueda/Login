@@ -4,6 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackgroundDark"
+    android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
     tools:context=".MateriasActivity">
+
+    <include
+        layout="@layout/toolbar_add"
+        android:id="@+id/toolbarAdd"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewMateria"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/viewButtonMateria"/>
+
+    <View
+        android:id="@+id/viewButtonMateria"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/buttonBackMateria"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_shape_button"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="@id/viewButtonMateria"
+        app:layout_constraintLeft_toLeftOf="@id/viewButtonMateria"
+        app:layout_constraintRight_toRightOf="@id/viewButtonMateria"
+        app:layout_constraintTop_toTopOf="@id/viewButtonMateria" />
 
 </android.support.constraint.ConstraintLayout>

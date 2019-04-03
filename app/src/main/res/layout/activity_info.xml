@@ -16,7 +16,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <!-- Para hacer circular la imagen se uso una biblioteca de tercero -->
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageViewInfo"
         android:layout_width="150dp"
@@ -32,27 +31,85 @@
     <TextView
         android:id="@+id/textViewNameInfo"
         android:layout_width="250dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="30dp"
+        android:text="Name"
+        android:textColor="@color/colorText"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@id/viewButton"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewInfo"
-        app:layout_constraintVertical_bias="0.328" />
+        app:layout_constraintVertical_bias="0.232" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:textColor="@color/colorText"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNameInfo" />
 
     <TextView
         android:id="@+id/textViewSurnameInfo"
         android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
+        android:textSize="20dp"
+        android:textColor="@color/colorText"
+        android:text="Surname"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNameInfo"/>
+        app:layout_constraintTop_toBottomOf="@+id/textViewName"/>
+
+    <TextView
+        android:id="@+id/textViewSurname"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:textColor="@color/colorText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSurnameInfo"/>
 
     <TextView
         android:id="@+id/textViewEmailInfo"
         android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
+        android:textSize="20dp"
+        android:textColor="@color/colorText"
+        android:text="Email"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSurnameInfo"/>
+        app:layout_constraintTop_toBottomOf="@+id/textViewSurname"/>
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:textColor="@color/colorText"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailInfo" />
+
+    <View
+        android:id="@+id/viewButton"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/buttonBackInfo"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_shape_button"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="@id/viewButton"
+        app:layout_constraintLeft_toLeftOf="@id/viewButton"
+        app:layout_constraintRight_toRightOf="@id/viewButton"
+        app:layout_constraintTop_toTopOf="@id/viewButton" />
 
 </android.support.constraint.ConstraintLayout>
