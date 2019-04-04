@@ -5,13 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundDark"
-    android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
     tools:context=".MateriasActivity">
-
-    <include
-        layout="@layout/toolbar_add"
-        android:id="@+id/toolbarAdd"
-        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewMateria"

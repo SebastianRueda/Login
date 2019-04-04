@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundDark"
+    tools:context=".AddMateriaActivity">
+
+    <TextView
+        android:id="@+id/textViewAddMateria"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Agregar Materia"
+        android:textColor="@color/colorText"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/viewButtonBackAddMateria"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.179" />
+
+    <EditText
+        android:id="@+id/editTextNombreMateria"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:hint="Materia"
+        android:textColorHint="@color/colorText"
+        android:textColor="@color/colorText"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/viewButtonAddMateria"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAddMateria"
+        app:layout_constraintVertical_bias="0.244" />
+
+    <EditText
+        android:id="@+id/editTextEstadoMateria"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:hint="Estado"
+        android:textColorHint="@color/colorText"
+        android:textColor="@color/colorText"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombreMateria"/>
+
+    <EditText
+        android:id="@+id/editTextOfertadoMateria"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:hint="Oferatado"
+        android:textColorHint="@color/colorText"
+        android:textColor="@color/colorText"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextEstadoMateria"/>
+
+    <View
+        android:id="@+id/viewButtonAddMateria"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/buttonAddMateria"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_shape_button"
+        android:text="Agregar"
+        app:layout_constraintBottom_toBottomOf="@id/viewButtonAddMateria"
+        app:layout_constraintLeft_toLeftOf="@id/viewButtonAddMateria"
+        app:layout_constraintRight_toRightOf="@id/viewButtonAddMateria"
+        app:layout_constraintTop_toTopOf="@id/viewButtonAddMateria" />
+
+</android.support.constraint.ConstraintLayout>
